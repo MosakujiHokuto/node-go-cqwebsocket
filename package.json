@@ -12,7 +12,8 @@
 	],
 	"scripts": {
 		"build": "tsc",
-		"test": "node --inspect-brk debug.js"
+		"test": "node --inspect-brk debug.js",
+		"postinstall": "tsc"
 	},
 	"repository": {
 		"type": "git",
