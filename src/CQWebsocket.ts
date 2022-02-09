@@ -1,5 +1,6 @@
 // noinspection JSUnusedGlobalSymbols
 
+import { info } from "console";
 import {EventEmitter} from "events";
 import http from "http";
 import WebSocket, {ClientOptions, Data} from "ws";
@@ -74,7 +75,13 @@ export class CQWebSocket {
 		clientConfig,
 		sendTimeout = 20,
 	}: CQWebSocketOptions = {}, debug = false) {
-		this._logger = console;
+		this._logger = debug ? console : {
+			debug: () => {},
+			info: () => {},
+			trace: () => {},
+			warn: () => {},
+			error: () => {}
+		};
 		this._debug = Boolean(debug);
 		this._sendTimeout = sendTimeout;
 		this._responseHandlers = new Map();
